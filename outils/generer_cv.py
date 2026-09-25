@@ -7,11 +7,20 @@ modifier cv.html / en/cv.html, puis relancer :
 
     python outils/generer_cv.py
 
+Pour une candidature, on peut aussi exporter le CV en JSON, l'ajuster, puis
+produire un PDF ailleurs que dans le site (le site public ne change pas) :
+
+    python outils/generer_cv.py --exporter fr > cv.json
+    python outils/generer_cv.py --depuis cv.json --langue fr --sortie ~/candidatures/x/CV.pdf [--telephone "06 ..."]
+
 Le PDF produit vise une lecture fiable par les ATS : une seule colonne, aucun
 tableau ni image, du texte réel dans l'ordre de lecture, des titres de section
 standard et les coordonnées dans le corps du document.
 """
 
+import argparse
+import json
+import sys
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -190,10 +199,11 @@ def styles():
 
 
 def section(titre, st):
-    return [
-        Paragraph(escape(titre.upper()), st["section"]),
-        HRFlowable(width="100%", thickness=0.6, color=FILET, spaceBefore=2, spaceAfter=5),
-    ]
+    # Le titre et son filet restent sur la même page que le premier élément de la section
+    titre_p = Paragraph(escape(titre.upper()), st["section"])
+    filet = HRFlowable(width="100%", thickness=0.6, color=FILET, spaceBefore=2, spaceAfter=5)
+    titre_p.keepWithNext = filet.keepWithNext = True
+    return [titre_p, filet]
 
 
 def lien(url, st_couleur="#52616b"):
@@ -208,8 +218,10 @@ def construire(donnees, conf, chemin):
     elements = [
         Paragraph(escape(donnees["nom"]), st["nom"]),
         Paragraph(escape(donnees["poste"]), st["poste"]),
-        Paragraph(escape(conf["lieu"]) + " | "
-                  + f'<a href="mailto:{donnees["courriel"]}" color="#52616b">{escape(donnees["courriel"])}</a>',
+        Paragraph(" | ".join(
+                      [escape(conf["lieu"]),
+                       f'<a href="mailto:{donnees["courriel"]}" color="#52616b">{escape(donnees["courriel"])}</a>']
+                      + ([escape(donnees["telephone"])] if donnees.get("telephone") else [])),
                   st["contact"]),
         Paragraph(" | ".join(lien(u) for u in (donnees["linkedin"], donnees["github"], donnees["site"])), st["contact"]),
     ]
@@ -217,8 +229,9 @@ def construire(donnees, conf, chemin):
     elements += section(t["profil"], st)
     elements += [Paragraph(" ".join(escape(p) for p in donnees["profil"]), st["corps"])]
 
-    def bloc(e):
-        contenu = [
+    def bloc(e, entete=()):
+        # entete : titre de section placé dans le premier bloc, pour qu'il ne reste pas seul en bas de page
+        contenu = [*entete,
             Paragraph(escape(e["titre"]), st["titre"]),
             Paragraph(f'{escape(e["organisme"])} | {escape(e["periode"])}', st["meta"]),
         ]
@@ -228,13 +241,9 @@ def construire(donnees, conf, chemin):
             contenu.append(Paragraph(f'{conf["mots_cles"]}{sep}' + escape(", ".join(e["mots_cles"])), st["mots"]))
         return [KeepTogether(contenu), Spacer(1, 6)]
 
-    elements += section(t["experience"], st)
-    for e in donnees["experiences"]:
-        elements += bloc(e)
-
-    elements += section(t["formation"], st)
-    for e in donnees["formations"]:
-        elements += bloc(e)
+    for cle, etapes_ in (("experience", donnees["experiences"]), ("formation", donnees["formations"])):
+        for i, e in enumerate(etapes_):
+            elements += bloc(e, section(t[cle], st) if i == 0 else ())
 
     elements += section(t["competences"], st)
     elements += [Paragraph(f"<b>{escape(g)}</b>{sep}{escape(outils)}", st["puce"], bulletText="•")
@@ -253,7 +262,7 @@ def construire(donnees, conf, chemin):
     elements += section(t["interets"], st)
     elements += [Paragraph(p, st["puce"], bulletText="•") for p in donnees["interets"]]
 
-    mots_cles = sorted({m for e in donnees["experiences"] for m in e["mots_cles"]})
+    mots_cles = donnees.get("mots_cles_pdf") or sorted({m for e in donnees["experiences"] for m in e["mots_cles"]})
     doc = SimpleDocTemplate(
         str(chemin), pagesize=A4,
         leftMargin=18 * mm, rightMargin=18 * mm, topMargin=16 * mm, bottomMargin=16 * mm,
@@ -267,6 +276,34 @@ def construire(donnees, conf, chemin):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--exporter", choices=LANGUES, metavar="LANGUE",
+                        help="écrit sur la sortie standard le CV extrait des pages, en JSON")
+    parser.add_argument("--depuis", type=Path, metavar="JSON", help="construit le PDF à partir d'un JSON ajusté")
+    parser.add_argument("--langue", choices=LANGUES, help="langue des intitulés (avec --depuis)")
+    parser.add_argument("--sortie", type=Path, metavar="PDF", help="chemin du PDF (avec --depuis)")
+    parser.add_argument("--telephone", help="numéro ajouté à l'en-tête (avec --depuis, jamais pour le site)")
+    args = parser.parse_args()
+
+    if args.exporter:
+        json.dump(extraire(LANGUES[args.exporter]), sys.stdout, ensure_ascii=False, indent=2)
+        print()
+        return
+
+    if args.depuis:
+        if not (args.langue and args.sortie):
+            parser.error("--depuis demande --langue et --sortie")
+        donnees = json.loads(args.depuis.read_text(encoding="utf-8"))
+        if args.telephone:
+            donnees["telephone"] = args.telephone
+        args.sortie.expanduser().parent.mkdir(parents=True, exist_ok=True)
+        construire(donnees, LANGUES[args.langue], args.sortie.expanduser())
+        print(f"{args.langue} → {args.sortie}")
+        return
+
+    if args.telephone:
+        parser.error("--telephone ne s'utilise qu'avec --depuis : les CV du site restent sans téléphone")
+
     for code, conf in LANGUES.items():
         chemin = RACINE / "assets" / conf["sortie"]
         construire(extraire(conf), conf, chemin)
