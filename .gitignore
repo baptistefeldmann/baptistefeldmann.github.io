@@ -12,3 +12,6 @@ __pycache__/
 
 # Données personnelles locales (téléphone, etc.)
 .env
+
+# Candidatures (CV adaptés, lettres, notes) : locales, jamais publiées
+/candidatures/

@@ -50,6 +50,14 @@ python3 -m venv .venv
 .venv/bin/python outils/generer_cv.py
 ```
 
+## Données locales non publiées
+
+- `candidatures/` : CV adaptés, lettres et notes de suivi, préparés avec le skill Claude Code `adapter-candidature`.
+- `.env` : données personnelles (téléphone), utilisées seulement pour les documents de candidature.
+
+Les deux sont exclus par le `.gitignore`. Un hook `pre-commit` local (`.git/hooks/pre-commit`, non versionné)
+refuse en plus tout commit qui les contiendrait.
+
 ## Déploiement
 
 À chaque push sur `main`, GitHub Actions génère les CV, vérifie qu'ils tiennent en deux pages et que leur texte est
