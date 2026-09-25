@@ -8,3 +8,7 @@
 # Environnement Python local
 .venv/
 __pycache__/
+.env
+
+# Données personnelles locales (téléphone, etc.)
+.env
