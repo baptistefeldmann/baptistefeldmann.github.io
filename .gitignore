@@ -1,0 +1,10 @@
+# Documents sources (non publiés)
+/Profile.pdf
+/CV_feldmann_english_2026_v3.pdf
+
+# CV générés à partir des pages (reconstruits par GitHub Actions)
+/assets/CV_*.pdf
+
+# Environnement Python local
+.venv/
+__pycache__/

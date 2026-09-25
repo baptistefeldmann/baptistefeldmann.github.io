@@ -1,0 +1,62 @@
+name: Publication du site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  construire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: outils/requirements.txt
+
+      - name: Générer les CV PDF à partir des pages
+        run: |
+          pip install -r outils/requirements.txt
+          python outils/generer_cv.py
+
+      - name: Vérifier que les CV sont lisibles par un ATS
+        run: |
+          sudo apt-get install -y --no-install-recommends poppler-utils > /dev/null
+          for f in assets/CV_*.pdf; do
+            pages=$(pdfinfo "$f" | awk '/^Pages:/ {print $2}')
+            echo "$f : $pages page(s)"
+            test "$pages" -le 2 || { echo "::error file=$f::Le CV dépasse 2 pages"; exit 1; }
+            pdftotext "$f" - | grep -q "Baptiste Feldmann" || { echo "::error file=$f::Texte illisible"; exit 1; }
+          done
+
+      - name: Préparer le site
+        run: |
+          mkdir _site
+          cp -r index.html cv.html publications.html projets.html en css js assets .nojekyll _site/
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deployer:
+    needs: construire
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - id: deploiement
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Baptiste Feldmann — CV</title>
+  <meta name="description" content="CV de Baptiste Feldmann : ingénieur data géospatiale chez Siradel, ancien ingénieur LiDAR aéroporté (CNRS / Université de Rennes 1).">
+  <link rel="alternate" hreflang="fr" href="https://baptistefeldmann.github.io/cv.html">
+  <link rel="alternate" hreflang="en" href="https://baptistefeldmann.github.io/en/cv.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')})();</script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 18 21 12 17 6 21Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 2v15l-6 4Z" fill="currentColor"/></svg>
+        Baptiste Feldmann
+      </a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html"><span>01</span>Présentation</a>
+        <a href="cv.html" aria-current="page"><span>02</span>CV</a>
+        <a href="publications.html"><span>03</span>Publications</a>
+        <a href="projets.html"><span>04</span>Projets</a>
+      </nav>
+      <a class="lang-switch" href="en/cv.html" hreflang="en" lang="en" title="English version">EN</a>
+      <button class="theme-toggle" type="button" aria-label="Basculer entre thème clair et sombre">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <canvas class="topo" data-seed="21" data-scale="260" data-levels="20" aria-hidden="true"></canvas>
+      <div class="container">
+        <div class="cartouche">
+          <p class="label"><span>Feuille 02 · Curriculum vitæ</span><span>Éd. 2026</span></p>
+          <h1>Itinéraire</h1>
+          <p>De la topographie au deep learning : expériences, formation et compétences, présentées comme un parcours balisé.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container cv-layout">
+        <div>
+          <div class="cv-block" data-cv="experience">
+            <h2>Expériences <span class="label">Tracé principal</span></h2>
+            <ol class="route">
+              <li class="waypoint" data-start="2022-07" data-end="">
+                <span class="waypoint__date">Juillet 2022 — aujourd'hui</span>
+                <h3>Ingénieur data géospatiale</h3>
+                <p class="waypoint__org"><a href="https://www.siradel.com/fr/">Siradel</a> <span>· Saint-Grégoire, Bretagne</span></p>
+                <ul>
+                  <li><strong>MLOps géospatial</strong> : conception et amélioration continue de workflows MLOps pour la segmentation sémantique d'images aériennes et satellitaires. Gestion du cycle de vie complet des modèles de deep learning : préparation des jeux de données, entraînement, validation, amélioration des performances et mise en production.</li>
+                  <li><strong>Pipelines de données</strong> : développement et industrialisation de pipelines Python pour la production automatisée de jeux de données géospatiales.</li>
+                  <li><strong>Product Owner technique</strong> : coordination de l'industrialisation des workflows de production. Recueil des besoins techniques, priorisation des développements, amélioration des processus.</li>
+                  <li><strong>Data engineering géospatial</strong> : production et maintenance de jeux de données géospatiales pour les projets clients.</li>
+                </ul>
+                <ul class="tags"><li class="tag">Python</li><li class="tag">Deep learning</li><li class="tag">Segmentation sémantique</li><li class="tag">MLOps</li><li class="tag">Télédétection</li></ul>
+              </li>
+              <li class="waypoint" data-start="2018-06" data-end="2022-06">
+                <span class="waypoint__date">Juin 2018 — juin 2022</span>
+                <h3>Ingénieur d'études LiDAR aéroporté</h3>
+                <p class="waypoint__org"><a href="https://lidar.univ-rennes.fr/">Plateforme de recherche LiDAR topo-bathymétrique</a> <span>· CNRS / Université de Rennes 1</span></p>
+                <ul>
+                  <li>Traitement de nuages de points LiDAR aéroportés à grande échelle pour produire des modèles numériques de terrain (MNT) et de surface (MNS) de haute qualité.</li>
+                  <li>R&amp;D sur les méthodes de machine learning pour la classification automatique de nuages de points 3D.</li>
+                  <li>Développement de chaînes de traitement avancées pour les données LiDAR full-waveform.</li>
+                  <li>Rédaction de rapports techniques et accompagnement des clients jusqu'à la livraison.</li>
+                  <li>Réalisation de grands projets LiDAR topo-bathymétriques, dont un levé de 180 km² en Laponie suédoise et un linéaire de 350 km sur la Loire.</li>
+                </ul>
+                <ul class="tags"><li class="tag">LiDAR</li><li class="tag">Nuages de points</li><li class="tag">Topo-bathymétrie</li><li class="tag">Machine learning</li><li class="tag">MNT / MNS</li></ul>
+              </li>
+              <li class="waypoint" data-start="2018-02" data-end="2018-05">
+                <span class="waypoint__date">Février — mai 2018</span>
+                <h3>Stage de fin d'études · Master 2</h3>
+                <p class="waypoint__org"><a href="https://lidar.univ-rennes.fr/">Plateforme de recherche LiDAR</a> <span>· Université de Rennes 1</span></p>
+                <p>« Étude des facteurs contrôlant la profondeur maximale de mesure bathymétrique par LiDAR aéroporté ». Génération de nuages de points à partir des données de vol, traitement de données topo-bathymétriques. Encadré par Dimitri Lague.</p>
+              </li>
+              <li class="waypoint" data-start="2017-02" data-end="2017-07">
+                <span class="waypoint__date">Février — juillet 2017</span>
+                <h3>Travail de fin d'études d'ingénieur</h3>
+                <p class="waypoint__org">BRGM <span>· Orléans</span></p>
+                <p>« Caractérisation fine de l'aléa chute de blocs en milieu côtier » sur 3,5 km de falaises. Comparaison diachronique de nuages de points LiDAR, chaîne de traitement pour la modélisation 3D des blocs érodés. Encadré par Clara Lévy, Thomas Dewez et Nathalie Marçot.</p>
+              </li>
+              <li class="waypoint" data-cv="skip">
+                <span class="waypoint__date">2013 — 2016</span>
+                <h3>Stages en topographie</h3>
+                <p class="waypoint__org">GEOSAT3D <span>· Bordeaux, 2016</span></p>
+                <p class="waypoint__org">Groupe SGTS · Gendron Lefebvre Arpenteurs-Géomètres <span>· Montréal, Canada, 2015</span></p>
+                <p class="waypoint__org">GEOUEST <span>· La Roche-sur-Yon, 2013</span></p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="cv-block" data-cv="education">
+            <h2>Formation <span class="label">Tracé secondaire</span></h2>
+            <ol class="route route--edu">
+              <li class="waypoint" data-start="2026-03" data-end="2026-08">
+                <span class="waypoint__date">Mars — août 2026</span>
+                <h3>Formation professionnelle MLOps</h3>
+                <p class="waypoint__org">Liora <span>· ex-DataScientest</span></p>
+                <p>Déploiement et monitoring de modèles, MLflow, Airflow, Docker, CI/CD, MinIO, BentoML. <a href="https://github.com/baptistefeldmann/projet_meteoAUS">Projet fil rouge sur GitHub</a>.</p>
+              </li>
+              <li class="waypoint" data-start="2017" data-end="2018">
+                <span class="waypoint__date">2017 — 2018</span>
+                <h3>Master 2 Géomatique SIGMA</h3>
+                <p class="waypoint__org">ENSAT <span>· Université Toulouse II</span></p>
+                <p>Sciences de l'information géographique et analyse spatiale, cartographie et télédétection.</p>
+              </li>
+              <li class="waypoint" data-start="2014" data-end="2017">
+                <span class="waypoint__date">2014 — 2017</span>
+                <h3>Diplôme d'ingénieur géomètre-topographe</h3>
+                <p class="waypoint__org">École supérieure des géomètres et topographes (ESGT) <span>· Le Mans</span></p>
+                <p>Géodésie, topographie, calcul scientifique en Python, photogrammétrie, LiDAR, urbanisme.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <aside class="aside-stack">
+          <div class="legend" data-cv="skills">
+            <span class="label">Légende · Compétences</span>
+            <div class="legend__group">
+              <h3><span class="sym sym--point"></span>Programmation<span class="level" style="--v: 90%"></span></h3>
+              <p>Python, SQL, Bash</p>
+            </div>
+            <div class="legend__group">
+              <h3><span class="sym sym--area" style="--c: var(--forest)"></span>Géospatial &amp; télédétection<span class="level" style="--v: 90%"></span></h3>
+              <p>GeoPandas, Rasterio, GDAL, Shapely, scikit-learn, Dask, PySTAC</p>
+            </div>
+            <div class="legend__group">
+              <h3><span class="sym sym--area" style="--c: var(--water)"></span>SIG<span class="level" style="--v: 90%"></span></h3>
+              <p>ArcGIS, QGIS</p>
+            </div>
+            <div class="legend__group">
+              <h3><span class="sym sym--tri" style="--c: var(--accent)"></span>Machine learning &amp; MLOps<span class="level" style="--v: 85%"></span></h3>
+              <p>PyTorch, deep learning, segmentation sémantique, FastAPI, Evidently, CI/CD</p>
+            </div>
+            <div class="legend__group">
+              <h3><span class="sym sym--line" style="--c: var(--water)"></span>Workflows ETL<span class="level" style="--v: 85%"></span></h3>
+              <p>Airflow, FME</p>
+            </div>
+            <div class="legend__group">
+              <h3><span class="sym sym--line" style="--c: var(--contour)"></span>Conteneurs &amp; versionnement<span class="level" style="--v: 75%"></span></h3>
+              <p>Docker, Git, DVC, MLflow</p>
+            </div>
+          </div>
+
+          <div class="legend" data-cv="languages">
+            <span class="label">Langues</span>
+            <p class="note"><strong>Français</strong> : langue maternelle</p>
+            <p class="note"><strong>Anglais</strong> : professionnel (TOEIC 800, niveau B2)</p>
+          </div>
+
+          <div class="legend" data-cv="interests">
+            <span class="label">Hors carte · Centres d'intérêt</span>
+            <p class="note"><strong>Golf</strong> : vingt ans de golf en compétition (2000–2020), avec plusieurs participations aux championnats de France et un titre de champion de France par équipes U12 (2005). Cette expérience a renforcé ma discipline, mon esprit d'analyse, ma capacité à performer sous pression et mon sens du travail en équipe.</p>
+            <p class="note"><strong>Trail</strong> : traileur passionné, j'ai terminé plusieurs ultra-trails, dont la CCC® (100 km) et le Trail de Bourbon (110 km) à La Réunion. L'ultra-endurance a renforcé ma résilience, ma discipline et ma capacité à planifier, à m'adapter et à maintenir une performance régulière sur des défis de longue haleine.</p>
+          </div>
+
+          <div class="cv-download">
+            <a class="btn btn--primary" href="assets/CV_Baptiste_Feldmann_FR.pdf" download>Télécharger le CV (PDF)</a>
+            <a class="cv-download__alt" href="assets/CV_Baptiste_Feldmann_EN.pdf" download hreflang="en">English version (PDF)</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="scalebar" aria-hidden="true">
+        <div class="scalebar__bar"><span></span><span></span><span></span><span></span></div>
+        <div class="scalebar__labels"><span>0</span><span>1</span><span>2 km</span></div>
+      </div>
+      <p>© <span data-year>2026</span> Baptiste Feldmann · WGS 84</p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/baptistefeldmann">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/baptiste-feldmann-a589b4167">LinkedIn</a></li>
+        <li><a href="https://hal.science/search/index/?q=authFullName_t%3A%22Baptiste+Feldmann%22">HAL</a></li>
+        <li><a href="mailto:feldmann.baptiste@gmail.com">E-mail</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>
