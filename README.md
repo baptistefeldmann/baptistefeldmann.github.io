@@ -50,6 +50,13 @@ python3 -m venv .venv
 .venv/bin/python outils/generer_cv.py
 ```
 
+## Image d'aperçu
+
+`assets/apercu_fr.png` et `assets/apercu_en.png` (1200 × 627) sont les images affichées par LinkedIn et les
+messageries quand on partage un lien du site. Elles reprennent le relief de la page d'accueil. Pour les régénérer
+(changement de titre ou de style) : `.venv/bin/python outils/generer_apercu.py`. Après publication, forcer LinkedIn
+à relire la page avec le [Post Inspector](https://www.linkedin.com/post-inspector/).
+
 ## Données locales non publiées
 
 - `candidatures/` : CV adaptés, lettres et notes de suivi, préparés avec le skill Claude Code `adapter-candidature`.
