@@ -52,7 +52,7 @@ python3 -m venv .venv
 
 ## Image d'aperçu
 
-`assets/apercu_fr.png` et `assets/apercu_en.png` (1200 × 627) sont les images affichées par LinkedIn et les
+`assets/apercu_fr.png` et `assets/apercu_en.png` (2400 × 1254, format 1,91:1) sont les images affichées par LinkedIn et les
 messageries quand on partage un lien du site. Elles reprennent le relief de la page d'accueil. Pour les régénérer
 (changement de titre ou de style) : `.venv/bin/python outils/generer_apercu.py`. Après publication, forcer LinkedIn
 à relire la page avec le [Post Inspector](https://www.linkedin.com/post-inspector/).
