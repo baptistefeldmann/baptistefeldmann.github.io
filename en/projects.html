@@ -64,25 +64,26 @@
       <div class="container">
         <div class="section__head">
           <span class="label">Main route</span>
-          <h2>Geospatial &amp; data</h2>
+          <h2>Data, MLOps &amp; geospatial</h2>
         </div>
-        <div class="tiles">
+        <div class="tiles tiles--wide">
+          <article class="tile tile--featured">
+            <div class="tile__map"><canvas class="topo" data-seed="202" data-scale="90" data-cell="4" data-levels="12" aria-hidden="true"></canvas><span class="tile__ref">Grid A1</span></div>
+            <div class="tile__body">
+              <h3><a href="https://github.com/baptistefeldmann/MLOps_Meteo_Australie">MLOps_Meteo_Australie</a></h3>
+              <p>Group project from the MLOps training: predict whether it will rain tomorrow at 49 Australian weather stations, and run it all like a real production system. Data versioned with DVC, XGBoost training tracked in MLflow with champion/challenger comparison (PR-AUC ≈ 0.80), FastAPI behind nginx, Streamlit interface, monthly orchestration with Airflow, Prometheus and Grafana monitoring with Slack alerts, and drift detection with Evidently.</p>
+              <p>Every component runs in a Docker container and goes through continuous integration (lint, tests, build, API smoke test); safeguards prevent the silent loss of training data.</p>
+              <ul class="tags"><li class="tag">MLOps</li><li class="tag">DVC</li><li class="tag">MLflow</li><li class="tag">XGBoost</li><li class="tag">Airflow</li><li class="tag">FastAPI</li><li class="tag">Docker</li><li class="tag">Prometheus</li><li class="tag">Grafana</li><li class="tag">Evidently</li><li class="tag">CI/CD</li></ul>
+              <div class="tile__meta"><span class="lang"><i style="--c:#3572A5"></i>Python</span><span>2026</span><span class="status">Group project</span></div>
+            </div>
+          </article>
           <article class="tile">
-            <div class="tile__map"><canvas class="topo" data-seed="101" data-scale="80" data-cell="4" data-levels="12" aria-hidden="true"></canvas><span class="tile__ref">Grid A1</span></div>
+            <div class="tile__map"><canvas class="topo" data-seed="101" data-scale="80" data-cell="4" data-levels="12" aria-hidden="true"></canvas><span class="tile__ref">Grid B1</span></div>
             <div class="tile__body">
               <h3><a href="https://github.com/baptistefeldmann/plateforme_lidar">plateforme_lidar</a></h3>
               <p>Python library and scripts developed at the <a href="https://lidar.univ-rennes.fr/">LiDAR Research Platform</a> to process airborne topo-bathymetric data. LAS/LAZ I/O (laspy 2), full-waveform data, SBET trajectories, CloudCompare and LAStools wrappers, 3DMASC classification, bathymetric correction, water surface extraction, overlap control and deliverable generation. No longer maintained. Development has been taken over by Paul Leroy, research engineer at the LiDAR Platform, as <a href="https://github.com/p-leroy/lidar_platform">lidar_platform</a>.</p>
               <ul class="tags"><li class="tag">LiDAR</li><li class="tag">point clouds</li><li class="tag">laspy</li><li class="tag">CloudCompare</li><li class="tag">GDAL</li></ul>
               <div class="tile__meta"><span class="lang"><i style="--c:#3572A5"></i>Python</span><span>2021 — 2022</span><span class="status">Archived</span><a href="https://github.com/p-leroy/lidar_platform">Maintained version ↗</a></div>
-            </div>
-          </article>
-          <article class="tile">
-            <div class="tile__map"><canvas class="topo" data-seed="202" data-scale="80" data-cell="4" data-levels="12" aria-hidden="true"></canvas><span class="tile__ref">Grid B1</span></div>
-            <div class="tile__body">
-              <h3><a href="https://github.com/baptistefeldmann/projet_meteoAUS">projet_meteoAUS</a></h3>
-              <p>Capstone project of the MLOps training: weather forecasting from Australian weather station data. Data collection, feature engineering and modelling with scikit-learn and XGBoost, in a reproducible conda environment.</p>
-              <ul class="tags"><li class="tag">MLOps</li><li class="tag">XGBoost</li><li class="tag">scikit-learn</li><li class="tag">pandas</li></ul>
-              <div class="tile__meta"><span class="lang"><i style="--c:#DA5B0B"></i>Jupyter Notebook</span><span>2026</span></div>
             </div>
           </article>
         </div>

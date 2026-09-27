@@ -624,6 +624,12 @@ canvas.topo { display: block; width: 100%; height: 100%; }
 .tile__meta a { margin-left: auto; color: var(--accent); text-decoration: none; }
 .tile__meta a:hover { text-decoration: underline; }
 .tiles-more { margin-top: 40px; text-align: center; }
+.tiles--wide { grid-template-columns: 1fr; }
+.tiles--wide .tile { flex-direction: row; }
+.tiles--wide .tile__map { flex: 0 0 32%; height: auto; min-height: 220px; border-bottom: 0; border-right: 1px solid var(--line); }
+.tiles--wide .tile__map canvas.topo { position: absolute; inset: 0; }
+.tile--featured { border-color: var(--ink); outline: 1px solid var(--ink); outline-offset: 4px; }
+.tile--featured h3 { font-size: 1.15rem; }
 .tiles + .section__head { margin-top: 88px; }
 .section__head p { margin: 0; max-width: 60ch; }
 .status {
@@ -678,6 +684,8 @@ canvas.topo { display: block; width: 100%; height: 100%; }
   .section { padding: 64px 0; }
   .pub { grid-template-columns: 1fr; gap: 4px; }
   .tiles { grid-template-columns: 1fr; }
+  .tiles--wide .tile { flex-direction: column; }
+  .tiles--wide .tile__map { flex: none; height: 170px; min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
 }
 
 @media (prefers-reduced-motion: reduce) {

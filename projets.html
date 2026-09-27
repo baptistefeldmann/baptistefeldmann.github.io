@@ -64,25 +64,26 @@
       <div class="container">
         <div class="section__head">
           <span class="label">Tracé principal</span>
-          <h2>Géospatial &amp; data</h2>
+          <h2>Data, MLOps &amp; géospatial</h2>
         </div>
-        <div class="tiles">
+        <div class="tiles tiles--wide">
+          <article class="tile tile--featured">
+            <div class="tile__map"><canvas class="topo" data-seed="202" data-scale="90" data-cell="4" data-levels="12" aria-hidden="true"></canvas><span class="tile__ref">Case A1</span></div>
+            <div class="tile__body">
+              <h3><a href="https://github.com/baptistefeldmann/MLOps_Meteo_Australie">MLOps_Meteo_Australie</a></h3>
+              <p>Projet de groupe de la formation MLOps : prédire s'il pleuvra le lendemain sur 49 stations météo australiennes, et faire tourner le tout comme un vrai système de production. Données versionnées avec DVC, entraînement XGBoost suivi dans MLflow avec comparaison champion / challenger (PR-AUC ≈ 0,80), API FastAPI derrière nginx, interface Streamlit, orchestration mensuelle par Airflow, supervision Prometheus et Grafana avec alertes Slack, et détection de dérive avec Evidently.</p>
+              <p>Chaque brique tourne dans un conteneur Docker et passe par l'intégration continue (lint, tests, build, test de l'API) ; des garde-fous bloquent la perte silencieuse de données d'entraînement.</p>
+              <ul class="tags"><li class="tag">MLOps</li><li class="tag">DVC</li><li class="tag">MLflow</li><li class="tag">XGBoost</li><li class="tag">Airflow</li><li class="tag">FastAPI</li><li class="tag">Docker</li><li class="tag">Prometheus</li><li class="tag">Grafana</li><li class="tag">Evidently</li><li class="tag">CI/CD</li></ul>
+              <div class="tile__meta"><span class="lang"><i style="--c:#3572A5"></i>Python</span><span>2026</span><span class="status">Projet de groupe</span></div>
+            </div>
+          </article>
           <article class="tile">
-            <div class="tile__map"><canvas class="topo" data-seed="101" data-scale="80" data-cell="4" data-levels="12" aria-hidden="true"></canvas><span class="tile__ref">Case A1</span></div>
+            <div class="tile__map"><canvas class="topo" data-seed="101" data-scale="80" data-cell="4" data-levels="12" aria-hidden="true"></canvas><span class="tile__ref">Case B1</span></div>
             <div class="tile__body">
               <h3><a href="https://github.com/baptistefeldmann/plateforme_lidar">plateforme_lidar</a></h3>
               <p>Bibliothèque et scripts Python développés à la <a href="https://lidar.univ-rennes.fr/">Plateforme de recherche LiDAR</a> pour traiter des données aéroportées topo-bathymétriques. Lecture et écriture LAS/LAZ (laspy 2), données full-waveform, trajectoires SBET, pilotage de CloudCompare et LAStools, classification 3DMASC, correction bathymétrique, extraction de la surface de l'eau, contrôle de recouvrement et création des livrables. Ce dépôt n'est plus maintenu. Le développement a été repris par Paul Leroy, ingénieur de recherche à la Plateforme LiDAR, sous le nom <a href="https://github.com/p-leroy/lidar_platform">lidar_platform</a>.</p>
               <ul class="tags"><li class="tag">LiDAR</li><li class="tag">nuages de points</li><li class="tag">laspy</li><li class="tag">CloudCompare</li><li class="tag">GDAL</li></ul>
               <div class="tile__meta"><span class="lang"><i style="--c:#3572A5"></i>Python</span><span>2021 — 2022</span><span class="status">Archivé</span><a href="https://github.com/p-leroy/lidar_platform">Version maintenue ↗</a></div>
-            </div>
-          </article>
-          <article class="tile">
-            <div class="tile__map"><canvas class="topo" data-seed="202" data-scale="80" data-cell="4" data-levels="12" aria-hidden="true"></canvas><span class="tile__ref">Case B1</span></div>
-            <div class="tile__body">
-              <h3><a href="https://github.com/baptistefeldmann/projet_meteoAUS">projet_meteoAUS</a></h3>
-              <p>Projet fil rouge de la formation MLOps : prévision météo à partir de données de stations australiennes. Collecte des données, création des features et modélisation avec scikit-learn et XGBoost, dans un environnement conda reproductible.</p>
-              <ul class="tags"><li class="tag">MLOps</li><li class="tag">XGBoost</li><li class="tag">scikit-learn</li><li class="tag">pandas</li></ul>
-              <div class="tile__meta"><span class="lang"><i style="--c:#DA5B0B"></i>Jupyter Notebook</span><span>2026</span></div>
             </div>
           </article>
         </div>
