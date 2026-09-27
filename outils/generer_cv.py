@@ -189,7 +189,7 @@ def styles():
         "poste": ParagraphStyle("poste", **{**base, "fontSize": 11.5, "leading": 15, "textColor": ACCENT}),
         "contact": ParagraphStyle("contact", **{**base, "fontSize": 9, "leading": 12.5, "textColor": ENCRE_DOUCE}),
         "section": ParagraphStyle("section", **{**base, "fontName": "Helvetica-Bold", "fontSize": 10.5,
-                                                "leading": 13, "textColor": ACCENT, "spaceBefore": 11}),
+                                                "leading": 13, "textColor": ACCENT, "spaceBefore": 10}),
         "titre": ParagraphStyle("titre", **{**base, "fontName": "Helvetica-Bold", "fontSize": 10.2, "leading": 13}),
         "meta": ParagraphStyle("meta", **{**base, "fontSize": 9, "textColor": ENCRE_DOUCE, "spaceAfter": 2}),
         "corps": ParagraphStyle("corps", **base),
@@ -230,16 +230,18 @@ def construire(donnees, conf, chemin):
     elements += [Paragraph(" ".join(escape(p) for p in donnees["profil"]), st["corps"])]
 
     def bloc(e, entete=()):
-        # entete : titre de section placé dans le premier bloc, pour qu'il ne reste pas seul en bas de page
-        contenu = [*entete,
+        # entete : titre de section placé dans le premier bloc, pour qu'il ne reste pas seul en bas de page.
+        # Seuls l'en-tête, l'intitulé, l'organisme et le premier paragraphe restent solidaires : le reste d'un
+        # bloc long peut passer à la page suivante, sans laisser de vide en bas de page.
+        tete = [*entete,
             Paragraph(escape(e["titre"]), st["titre"]),
             Paragraph(f'{escape(e["organisme"])} | {escape(e["periode"])}', st["meta"]),
         ]
-        contenu += [Paragraph(p, st["corps"]) for p in e["description"]]
-        contenu += [Paragraph(p, st["puce"], bulletText="•") for p in e["puces"]]
+        corps = [Paragraph(p, st["corps"]) for p in e["description"]]
+        corps += [Paragraph(p, st["puce"], bulletText="•") for p in e["puces"]]
         if e["mots_cles"]:
-            contenu.append(Paragraph(f'{conf["mots_cles"]}{sep}' + escape(", ".join(e["mots_cles"])), st["mots"]))
-        return [KeepTogether(contenu), Spacer(1, 6)]
+            corps.append(Paragraph(f'{conf["mots_cles"]}{sep}' + escape(", ".join(e["mots_cles"])), st["mots"]))
+        return [KeepTogether(tete + corps[:1]), *corps[1:], Spacer(1, 5)]
 
     for cle, etapes_ in (("experience", donnees["experiences"]), ("formation", donnees["formations"])):
         for i, e in enumerate(etapes_):
@@ -265,7 +267,7 @@ def construire(donnees, conf, chemin):
     mots_cles = donnees.get("mots_cles_pdf") or sorted({m for e in donnees["experiences"] for m in e["mots_cles"]})
     doc = SimpleDocTemplate(
         str(chemin), pagesize=A4,
-        leftMargin=18 * mm, rightMargin=18 * mm, topMargin=16 * mm, bottomMargin=16 * mm,
+        leftMargin=18 * mm, rightMargin=18 * mm, topMargin=14 * mm, bottomMargin=14 * mm,
         title=f'CV — {donnees["nom"]} — {donnees["poste"]}',
         author=donnees["nom"],
         subject=donnees["poste"],
