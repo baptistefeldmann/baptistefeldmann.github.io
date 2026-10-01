@@ -79,7 +79,18 @@
             </div>
           </article>
           <article class="tile">
-            <div class="tile__map"><canvas class="topo" data-seed="101" data-scale="80" data-cell="4" data-levels="12" aria-hidden="true"></canvas><span class="tile__ref">Grid B1</span></div>
+            <div class="tile__map"><canvas class="topo" data-seed="606" data-scale="80" data-cell="4" data-levels="12" aria-hidden="true"></canvas><span class="tile__ref">Grid B1</span></div>
+            <div class="tile__body">
+              <h3><a href="https://github.com/baptistefeldmann/observatoire-secheresse">observatoire-secheresse</a></h3>
+              <p>Drought observatory for a French département, read zone by zone. A Python pipeline ingests open data (Hub'Eau for groundwater, river flow and ONDE low-flow surveys, Météo-France SIM, drinking-water reservoirs, SANDRE water bodies) and computes, for each ISO week, standardised indices on a 7-level scale: precipitation (SPI), groundwater (IPS, following the BRGM method), river flow and a zone-weighted composite index, compared with a 1991–2020 normal. Reference instance: the Vendée, with 12 hydrogeological zones and 140 stations.</p>
+              <p>Data is versioned with DVC (DagsHub) and served by a PostGIS database that can be rebuilt at any time and queried from QGIS. The code is strictly typed (mypy) and tested without network access, and the territory is changed through configuration alone.</p>
+              <p><strong>Status</strong>: personal project, V1 in progress. Steps 1 to 5 of 9 are done; the weekly job, the API and the web dashboard come next.</p>
+              <ul class="tags"><li class="tag">Python</li><li class="tag">PostGIS</li><li class="tag">GeoPandas</li><li class="tag">DVC</li><li class="tag">Hub'Eau</li><li class="tag">QGIS</li><li class="tag">Alembic</li><li class="tag">Docker</li><li class="tag">pytest</li></ul>
+              <div class="tile__meta"><span class="lang"><i style="--c:#3572A5"></i>Python</span><span>2026</span><span class="status">Personal project · in progress</span></div>
+            </div>
+          </article>
+          <article class="tile">
+            <div class="tile__map"><canvas class="topo" data-seed="101" data-scale="80" data-cell="4" data-levels="12" aria-hidden="true"></canvas><span class="tile__ref">Grid C1</span></div>
             <div class="tile__body">
               <h3><a href="https://github.com/baptistefeldmann/plateforme_lidar">plateforme_lidar</a></h3>
               <p>Python library and scripts developed at the <a href="https://lidar.univ-rennes.fr/">LiDAR Research Platform</a> to process airborne topo-bathymetric data. LAS/LAZ I/O (laspy 2), full-waveform data, SBET trajectories, CloudCompare and LAStools wrappers, 3DMASC classification, bathymetric correction, water surface extraction, overlap control and deliverable generation. No longer maintained. Development has been taken over by Paul Leroy, research engineer at the LiDAR Platform, as <a href="https://github.com/p-leroy/lidar_platform">lidar_platform</a>.</p>
